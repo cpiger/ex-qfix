@@ -27,19 +27,24 @@ command! EXQFixPaste call exqfix#paste('*')
 "}}}
 
 " default key mappings {{{1
-call exqfix#register_hotkey( 1  , 1, '<F1>'            , ":call exqfix#toggle_help()<CR>"                        , 'Toggle help.' )
+call exqfix#register_hotkey( 1  , 1, '?'            , ":call exqfix#toggle_help()<CR>"                        , 'Toggle help.' )
 if has('gui_running')
     call exqfix#register_hotkey( 2  , 1, '<ESC>'           , ":call exqfix#close_window()<CR>"                       , 'Close window.' )
 else
     call exqfix#register_hotkey( 2  , 1, '<leader><ESC>'   , ":call exqfix#close_window()<CR>"                       , 'Close window.' )
 endif
-call exqfix#register_hotkey( 3  , 1, '<Space>'         , ":call exqfix#toggle_zoom()<CR>"                        , 'Zoom in/out project window.' )
+" call exqfix#register_hotkey( 3  , 1, '<Space>'         , ":call exqfix#toggle_zoom()<CR>"                        , 'Zoom in/out project window.' )
+call exqfix#register_hotkey( 3  , 1, 'z'               , ":call exqfix#toggle_zoom()<CR>"                        , 'Zoom in/out project window.' )
 call exqfix#register_hotkey( 4  , 1, '<CR>'            , ":call exqfix#confirm_select('')<CR>"                   , 'File: Open it. Folder: Fold in/out.' )
 call exqfix#register_hotkey( 5  , 1, '<2-LeftMouse>'   , ":call exqfix#confirm_select('')<CR>"                   , 'File: Open it. Folder: Fold in/out.' )
 call exqfix#register_hotkey( 6  , 1, '<S-CR>'          , ":call exqfix#confirm_select('shift')<CR>"              , 'File: Split and open it. Folder: Open the folder in os file browser.' )
 call exqfix#register_hotkey( 7  , 1, '<S-2-LeftMouse>' , ":call exqfix#confirm_select('shift')<CR>"              , 'File: Split and open it. Folder: Open the folder in os file browser.' )
 call exqfix#register_hotkey( 8  , 1, 'p'               , ":call exqfix#paste('" . '"' . "')<CR>"                 , 'Paste error list from register ".' )
 call exqfix#register_hotkey( 9  , 1, '<leader>p'       , ":call exqfix#paste('*')<CR>"                           , 'Paste error list from register *.' )
+call exqfix#register_hotkey( 10 , 1, '<a-e>'           , ":call exqfix#locate_word('error')<CR>"                , 'Search error line.' )
+call exqfix#register_hotkey( 11  , 1, 'q'           , ":call exqfix#close_window()<CR>"                       , 'Close window.' )
+call exqfix#register_hotkey( 100, 0, '<leader>qf', ":EXQFixToggle<CR>", 'Toggle quickfix window.' )
+" call exqfix#register_hotkey( 101, 0, '<leader>qq', ":EXQFixPaste<CR>", 'Open quickfix window and paste error list from register *.' )
 "}}}
 
 call ex#register_plugin( 'exqfix', { 'actions': ['autoclose'] } )
